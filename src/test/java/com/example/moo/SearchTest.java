@@ -8,6 +8,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class SearchTest {
 
 
@@ -21,13 +25,21 @@ public class SearchTest {
 
     @DisplayName("Should return matching results when searching for valid product")
     @ParameterizedTest(name = "Searching for \"{0}\" should return item containing \"{1}\"")
-//    @CsvSource({"Business Cards, Business Cards", "Stickers, Stickers", "Flyers, Flyers"})
-    @CsvSource({"Business Cards, Business Cards"})
-    void shouldReturnMatchingResultsWhenSearchingForValidProduct(String search, String result) {
+    @CsvSource({"Business Cards, Business Cards", "Stickers, Stickers", "Flyers, Flyers"})
+    void shouldReturnMatchingResultsWhenSearchingForValidProduct(String search, String expected) {
         ResultsPage resultsPage = homePage.searchFor(search);
+        List<String> resultHeaders = resultsPage.getResultHeaders();
+        int count =0;
+        for (String resultHeader : resultHeaders) {
+            if (resultHeader.toLowerCase().contains(expected.toLowerCase())){
+                count++;
+            }
+        }
+        assertTrue(count > 0);
     }
 
-    @AfterEach void closeWeb(){
+    @AfterEach
+    void closeWeb(){
         homePage.quit();
     }
 }
