@@ -4,15 +4,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class HomePage {
+public class HomePage extends AbstractPage{
 
     public static final String HOMEPAGE= "http://www.moo.com";
     public static final By SEARCH_BOX = By.id("query");
 
-    private final WebDriver driver;
 
     public HomePage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public ResultsPage searchFor(String search) {

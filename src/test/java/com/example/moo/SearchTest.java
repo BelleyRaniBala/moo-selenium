@@ -2,6 +2,7 @@ package com.example.moo;
 
 import com.example.moo.pages.HomePage;
 import com.example.moo.pages.ResultsPage;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -15,7 +16,6 @@ public class SearchTest {
     @BeforeEach
     public void startWeb() {
         homePage = Launcher.chromeDriver();
-
     }
 
 
@@ -25,5 +25,9 @@ public class SearchTest {
     @CsvSource({"Business Cards, Business Cards"})
     void shouldReturnMatchingResultsWhenSearchingForValidProduct(String search, String result) {
         ResultsPage resultsPage = homePage.searchFor(search);
+    }
+
+    @AfterEach void closeWeb(){
+        homePage.quit();
     }
 }
