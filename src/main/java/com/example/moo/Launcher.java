@@ -13,7 +13,7 @@ public class Launcher {
     }
 
     private static HomePage launch( WebDriver driver) {
-        driver.get(HomePage.HOMEPAGE);
+        driver.get(HomePage.HOMEPAGE_URL);
         return new HomePage(driver);
     }
 }

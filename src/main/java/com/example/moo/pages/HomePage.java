@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 public class HomePage extends AbstractPage{
 
-    public static final String HOMEPAGE= "http://www.moo.com";
+    public static final String HOMEPAGE_URL = "http://www.moo.com";
     public static final By SEARCH_BOX = By.id("query");
 
 
