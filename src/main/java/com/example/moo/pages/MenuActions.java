@@ -27,11 +27,11 @@ public class MenuActions extends AbstractPage {
         WebElement productSubmenu = driver.findElement(PRODUCT_SUBMENU_LINK);
         Actions action = new Actions(driver);
         action.moveToElement(productSubmenu)
-                .pause(200)
+                .pause(500)
                 .moveToElement(driver.findElement(By.xpath("//*[contains(text(),'"+category+"')]")))
-                .pause(200)
+                .pause(500)
                 .moveToElement(driver.findElement(By.xpath("//*[contains(text(),'"+product+"')]")))
-                .pause(200)
+                .pause(500)
                 .click()
                 .build().perform();
 
