@@ -10,7 +10,17 @@ public abstract class AbstractPage {
         this.driver = driver;
     }
 
+/*    public MenuPage menu(){
+        return new MenuPage(driver);
+    }*/
+
     public void quit(){
         driver.quit();
     }
+
+    public MenuActions menu() {
+        return new MenuActions(driver);
+    }
+
+
 }
