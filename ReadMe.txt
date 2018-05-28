@@ -1,4 +1,5 @@
 Belley Rani Bala - selenium + JUnit 5 testing of moo.com
+This project can be also found here: https://github.com/BelleyRaniBala/moo-selenium
 
 This is a maven project. You need JDK8 to run it. The included chromedriver.exe works only on Windows
 
