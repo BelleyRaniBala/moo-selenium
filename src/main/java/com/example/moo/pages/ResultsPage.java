@@ -9,6 +9,7 @@ import java.util.List;
 
 public class ResultsPage extends AbstractPage {
     public static final By HEADERS = By.xpath("//*[@id=\"hits\"]/div/div[*]/div/div[1]");
+    public static final By NO_PAGES_FOUND = By.xpath("//*[@id=\"hits\"]/div/div/div/div[2]/p");
 
     public ResultsPage(WebDriver driver) {
         super(driver);
@@ -22,5 +23,9 @@ public class ResultsPage extends AbstractPage {
             results.add(element.getText());
         }
         return results;
+    }
+
+    public String getNoPageFoundText() {
+        return driver.findElement(NO_PAGES_FOUND).getText();
     }
 }
