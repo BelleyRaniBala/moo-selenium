@@ -7,9 +7,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -28,6 +32,7 @@ public class SearchTest {
     @DisplayName("Should return matching results when searching for valid product")
     @ParameterizedTest(name = "Searching for \"{0}\" should return item containing \"{1}\"")
     @CsvSource({"Business Cards, Business Cards", "Stickers, Stickers", "Flyers, Flyers"})
+//    @MethodSource("productsSource")
     void shouldReturnMatchingResultsWhenSearchingForValidProduct(String search, String expected) {
         ResultsPage resultsPage = homePage.searchFor(search);
         List<String> resultHeaders = resultsPage.getResultHeaders();
@@ -41,6 +46,18 @@ public class SearchTest {
     }
 
 
+//    static List<Arguments> productsSource(){
+////            return UnitTestDataProvider.productsSourceData();
+//        /*return Arrays.asList(
+//                Arguments.of("a","b"),
+//                Arguments.of("c","d"),
+//                Arguments.of("e","f")
+//        );*/
+//    }
+
+
+
+
     @DisplayName("Should receive a message when customer searches for an invalid product")
     @Test
     void shouldReceiveAMessageWhenCustomerSearchesForAnInvalidProduct() {
@@ -51,6 +68,7 @@ public class SearchTest {
 
 
     }
+
 
     @AfterEach
     void closeWeb() {
